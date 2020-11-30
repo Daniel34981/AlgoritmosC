@@ -3,6 +3,7 @@
 
 void encriptar();
 void desEncriptar();
+void interseccion();
 void menu();
 
 void menu(){
@@ -36,7 +37,7 @@ void menu(){
             case 6:printf("eligio %i\n", option);
                 break;
 
-            case 7:printf("eligio %i\n", option);
+            case 7:interseccion();
                 break;
 
             case 8:printf("eligio %i\n", option);
@@ -88,6 +89,37 @@ void desEncriptar(){
     printf("La nueva frase es: ",sum);
     printf("\n%s\n",frase);
     printf("************************************************************************\n");
+}
+void interseccion(){
+    char cadenaUno[250];
+    char cadenaDos[250];
+    int contador=0;
+    printf("Digite la primera cadena: ");
+    fflush(stdin);
+    gets(cadenaUno);
+    printf("Digite la segunda cadena: ");
+    fflush(stdin);
+    gets(cadenaDos);
+    char cadenaRespuesta[250]="";
+    for (int i = 0; i < strlen(cadenaUno); ++i) {
+        for (int j = 0; j < strlen(cadenaDos); ++j) {
+            if (cadenaUno[i]==cadenaDos[j]){
+                int helper=0;
+                for (int k = 0; k < strlen(cadenaRespuesta); ++k) {
+                    if (cadenaUno[i]!=cadenaRespuesta[k]){
+                        helper++;
+                    }else if (cadenaUno[i]==cadenaRespuesta[k]){
+                        k=strlen(cadenaRespuesta);
+                    }
+                }
+                if (helper==strlen(cadenaRespuesta)){
+                    cadenaRespuesta[contador]=cadenaUno[i];
+                    contador++;
+                }
+            }
+        }
+    }
+    printf("\n%s\n",cadenaRespuesta);
 }
 
 int main() {
